@@ -1,6 +1,6 @@
-# __NAME__
+# terraform-aws-ecr-repository
 
-__DESCRIPTION__
+ECR repository with immutable tags, scan on push and a lifecycle policy that keeps the last N images
 
 ## Opinions
 
@@ -10,7 +10,7 @@ __DESCRIPTION__
 
 ```hcl
 module "this" {
-  source = "git::https://github.com/Olensys/__NAME__.git?ref=v1.0.0"
+  source = "git::https://github.com/Olensys/terraform-aws-ecr-repository.git?ref=v1.0.0"
 
   name = "example"
   context = {
