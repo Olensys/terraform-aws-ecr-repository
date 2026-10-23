@@ -14,17 +14,17 @@ ECR repository with immutable tags, scan on push and a lifecycle policy that kee
 ## Usage
 
 ```hcl
-module "this" {
-  source = "git::https://github.com/Olensys/terraform-aws-ecr-repository.git?ref=v1.0.0"
+module "naming" {
+  source  = "git::https://github.com/Olensys/terraform-null-naming.git?ref=v1.0.1"
+  context = var.context
+}
 
-  name = "example"
-  context = {
-    organization = "olensys"
-    environment  = "dev"
-    application  = "example"
-    owner        = "platform"
-    cost_center  = "eng"
-  }
+module "ecr_repository" {
+  source  = "git::https://github.com/Olensys/terraform-aws-ecr-repository.git?ref=v1.0.2"
+  name    = module.naming.name
+  context = var.context
+
+  tags = module.naming.tags
 }
 ```
 

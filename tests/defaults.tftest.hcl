@@ -11,13 +11,10 @@ variables {
   name = "example"
 }
 
-# Child-module resources are not addressable from tests. The hardcoded
-# IMMUTABLE tag mutability is therefore proven statically (trivy) and by the
-# real apply in complete.tftest.hcl; here we assert the repository plans with
-# the requested name and merged tags.
 run "test_immutable_tags" {
   command = plan
 
+  # SMOKE: child-module resources are not addressable from tests, so this only asserts the requested name and an empty tag map; the hardcoded IMMUTABLE tag mutability is proven by trivy and by the real apply in complete.tftest.hcl.
   assert {
     condition     = output.name == "example" && output.id == "example"
     error_message = "Repository must plan with the requested name."
@@ -29,25 +26,29 @@ run "test_immutable_tags" {
   }
 }
 
-# Same visibility limit as above for repository_image_scan_on_push = true.
-run "test_scan_on_push" {
+run "test_tags_contract" {
   command = plan
 
   variables {
-    tags = { team = "platform" }
+    tags = { Owner = "x" }
     context = {
       organization = "olensys"
       environment  = "test"
       application  = "example"
       owner        = "platform"
       cost_center  = "eng"
-      extra_tags   = { env = "test" }
+      extra_tags   = { Owner = "y", Team = "z" }
     }
   }
 
   assert {
-    condition     = output.tags == tomap({ env = "test", team = "platform" })
-    error_message = "var.tags must be applied last over context.extra_tags."
+    condition     = output.tags.Owner == "x"
+    error_message = "var.tags must win over context.extra_tags."
+  }
+
+  assert {
+    condition     = output.tags.Team == "z"
+    error_message = "context.extra_tags must be merged."
   }
 }
 
