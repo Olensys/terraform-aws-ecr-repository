@@ -1,17 +1,26 @@
 output "id" {
-  description = "Identifier of the primary resource. Null when create is false."
+  description = "Identifier of the repository (its name). Null when create is false."
   value       = var.create ? var.name : null
 }
 
 output "name" {
-  description = "Name of the primary resource. Null when create is false."
+  description = "Name of the repository. Null when create is false."
   value       = var.create ? var.name : null
 }
 
-# GCP modules replace this output with `self_link`. Replace `null` with the resource's ARN.
 output "arn" {
-  description = "ARN of the primary resource. Null when create is false."
-  value       = null
+  description = "ARN of the repository. Null when create is false."
+  value       = var.create ? module.this.repository_arn : null
+}
+
+output "url" {
+  description = "URL of the repository (registry host and repository name). Null when create is false."
+  value       = var.create ? module.this.repository_url : null
+}
+
+output "lifecycle_policy_json" {
+  description = "Lifecycle policy document applied to the repository. Null when create is false."
+  value       = var.create ? local.lifecycle_policy_json : null
 }
 
 output "tags" {

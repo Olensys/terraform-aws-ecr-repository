@@ -1,1 +1,2 @@
-# One ID per line, each with a justification comment.
+# AWS-0033: AES256 is the documented default encryption; a customer-managed KMS key is available through the kms_key_arn input.
+AWS-0033

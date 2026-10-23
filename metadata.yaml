@@ -4,7 +4,7 @@ tier: capability          # primitive | capability | blueprint
 maturity: experimental    # experimental | stable | deprecated
 description: ECR repository with immutable tags, scan on push and a lifecycle policy that keeps the last N images
 owners: [platform]
-upstream: null            # e.g. "terraform-aws-modules/s3-bucket/aws 5.17.0"
-pairs_with: null          # e.g. "terraform-google-gcs-bucket"
+upstream: "terraform-aws-modules/ecr/aws 3.2.0"
+pairs_with: terraform-google-artifact-registry
 registry_name: terraform-aws-ecr-repository
 deprecated: null          # { removal: YYYY-MM-DD, replacement: <repo> }
