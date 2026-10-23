@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.2
+
+### Tests
+
+- `test_scan_on_push` (which never observed scan-on-push) is replaced by `test_tags_contract`: `tags` wins over `context.extra_tags`, and extra tags are merged.
+- `test_immutable_tags` is marked `# SMOKE:` because it only asserts the name and tag map; immutability is proven by trivy and the nightly apply.
+
+### Docs
+
+- README Usage shows the naming module.
+
 ## 1.0.1
 
 ### Fixes
