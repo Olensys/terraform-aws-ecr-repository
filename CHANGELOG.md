@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/Olensys/terraform-aws-ecr-repository/compare/v1.0.3...v1.0.4) (2026-10-24)
+
+
+### Bug Fixes
+
+* **examples:** unique application slug so concurrent integration runs do not collide ([#2](https://github.com/Olensys/terraform-aws-ecr-repository/issues/2)) ([0a3e50d](https://github.com/Olensys/terraform-aws-ecr-repository/commit/0a3e50d8cb0e0a7a425bac2f06f24c8135656ba9))
+
 ## [1.0.3](https://github.com/Olensys/terraform-aws-ecr-repository/compare/v1.0.2...v1.0.3) (2026-10-24)
 
 
