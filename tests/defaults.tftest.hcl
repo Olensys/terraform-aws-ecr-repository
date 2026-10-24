@@ -14,7 +14,7 @@ variables {
 run "test_immutable_tags" {
   command = plan
 
-  # SMOKE: child-module resources are not addressable from tests, so this only asserts the requested name and an empty tag map; the hardcoded IMMUTABLE tag mutability is proven by trivy and by the real apply in complete.tftest.hcl.
+  # SMOKE: child-module resources are not addressable from tests, so this only asserts the requested name and an empty tag map; the hardcoded IMMUTABLE tag mutability is only truly checked by a real apply (the nightly complete.tftest.hcl applies the example but asserts nothing about this setting) and, where applicable, enforced statically by trivy.
   assert {
     condition     = output.name == "example" && output.id == "example"
     error_message = "Repository must plan with the requested name."
