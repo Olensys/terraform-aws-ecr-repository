@@ -114,3 +114,26 @@ run "test_keep_last_images_validation" {
 
   expect_failures = [var.keep_last_images]
 }
+
+run "test_image_tag_mutability_mutable" {
+  command = plan
+
+  variables {
+    image_tag_mutability = "MUTABLE"
+  }
+
+  assert {
+    condition     = output.name == "example"
+    error_message = "MUTABLE tag mutability must plan."
+  }
+}
+
+run "test_image_tag_mutability_validation" {
+  command = plan
+
+  variables {
+    image_tag_mutability = "SOMETIMES"
+  }
+
+  expect_failures = [var.image_tag_mutability]
+}
