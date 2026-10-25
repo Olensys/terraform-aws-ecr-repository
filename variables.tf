@@ -40,6 +40,16 @@ variable "keep_last_images" {
   }
 }
 
+variable "image_tag_mutability" {
+  description = "Whether image tags can be overwritten. IMMUTABLE (default) rejects a push to an existing tag; MUTABLE allows moving tags such as latest."
+  type        = string
+  default     = "IMMUTABLE"
+  validation {
+    condition     = contains(["IMMUTABLE", "MUTABLE"], var.image_tag_mutability)
+    error_message = "image_tag_mutability must be IMMUTABLE or MUTABLE."
+  }
+}
+
 variable "pull_principals" {
   description = "IAM principal ARNs granted read (pull) access through the repository policy. Empty creates no repository policy."
   type        = list(string)

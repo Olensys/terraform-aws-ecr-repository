@@ -4,7 +4,7 @@ ECR repository with immutable tags, scan on push and a lifecycle policy that kee
 
 ## Opinions
 
-- Image tags are `IMMUTABLE`.
+- Image tags are `IMMUTABLE` unless `image_tag_mutability` is set to `MUTABLE`.
 - Scan on push is enabled.
 - Force delete is disabled; a repository that still holds images cannot be destroyed.
 - Encryption is `AES256` unless `kms_key_arn` is set, then `KMS` with that key.
@@ -57,6 +57,7 @@ No resources.
 | <a name="input_context"></a> [context](#input\_context) | Deployment context used for naming, tagging and environment-dependent defaults. | <pre>object({<br/>    organization = string<br/>    environment  = string<br/>    application  = string<br/>    component    = optional(string)<br/>    owner        = string<br/>    cost_center  = string<br/>    extra_tags   = optional(map(string), {})<br/>  })</pre> | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | Resource name. Lowercase letters, digits and hyphens. | `string` | n/a | yes |
 | <a name="input_create"></a> [create](#input\_create) | Whether to create any resources. Set false to plan nothing. | `bool` | `true` | no |
+| <a name="input_image_tag_mutability"></a> [image\_tag\_mutability](#input\_image\_tag\_mutability) | Whether image tags can be overwritten. IMMUTABLE (default) rejects a push to an existing tag; MUTABLE allows moving tags such as latest. | `string` | `"IMMUTABLE"` | no |
 | <a name="input_keep_last_images"></a> [keep\_last\_images](#input\_keep\_last\_images) | Number of tagged images to keep. Older images are expired by the lifecycle policy. | `number` | `30` | no |
 | <a name="input_kms_key_arn"></a> [kms\_key\_arn](#input\_kms\_key\_arn) | KMS key ARN for repository encryption. Null uses AES256 (AWS-managed); set to use KMS. | `string` | `null` | no |
 | <a name="input_pull_principals"></a> [pull\_principals](#input\_pull\_principals) | IAM principal ARNs granted read (pull) access through the repository policy. Empty creates no repository policy. | `list(string)` | `[]` | no |

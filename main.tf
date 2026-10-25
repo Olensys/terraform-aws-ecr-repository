@@ -40,7 +40,7 @@ module "this" {
   create_repository = var.create
   repository_name   = var.name
 
-  repository_image_tag_mutability = "IMMUTABLE"
+  repository_image_tag_mutability = var.image_tag_mutability
   repository_image_scan_on_push   = true
   repository_force_delete         = false
 
