@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Olensys/terraform-aws-ecr-repository/compare/v1.0.4...v1.1.0) (2026-10-25)
+
+
+### Features
+
+* add image_tag_mutability input ([#5](https://github.com/Olensys/terraform-aws-ecr-repository/issues/5)) ([cf5a5e9](https://github.com/Olensys/terraform-aws-ecr-repository/commit/cf5a5e9e69b10e31f0b663064a0abfca8a0fb26b))
+
 ## [1.0.4](https://github.com/Olensys/terraform-aws-ecr-repository/compare/v1.0.3...v1.0.4) (2026-10-24)
 
 
