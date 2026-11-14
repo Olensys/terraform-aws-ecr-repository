@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/Olensys/terraform-aws-ecr-repository/compare/v1.1.0...v1.1.1) (2026-11-14)
+
+
+### Bug Fixes
+
+* tag the minimal example's resources through the naming module ([#7](https://github.com/Olensys/terraform-aws-ecr-repository/issues/7)) ([6b01562](https://github.com/Olensys/terraform-aws-ecr-repository/commit/6b015629531139a8d6702dca6d9e0bc2c716ed7c))
+
 ## [1.1.0](https://github.com/Olensys/terraform-aws-ecr-repository/compare/v1.0.4...v1.1.0) (2026-10-25)
 
 
